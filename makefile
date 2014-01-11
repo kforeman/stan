@@ -15,9 +15,9 @@ SUFIXES:
 # - CC: The compiler to use. Expecting g++ or clang++.
 # - O: Optimization level. Valid values are {0, 1, 2, 3}.
 # - AR: archiver (must specify for cross-compiling)
-# - OS: {mac, win, linux}. 
+# - OS: {mac, win, linux}.
 ##
-CC = g++
+CC = icc
 O = 3
 O_STANC = 0
 AR = ar
@@ -29,15 +29,16 @@ STAN_HOME := $(dir $(firstword $(MAKEFILE_LIST)))
 EIGEN ?= lib/eigen_3.2.0
 BOOST ?= lib/boost_1.54.0
 GTEST ?= lib/gtest_1.7.0
+MKL ?= /apps/intel/2013/composer_xe_2013/mkl
 
 ##
 # Set default compiler options.
-## 
-CFLAGS = -I src -isystem $(EIGEN) -isystem $(BOOST) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS
+##
+CFLAGS = -I src -isystem $(EIGEN) -isystem $(BOOST) -isystem $(MKL) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -D EIGEN_USE_MKL_ALL
 CFLAGS_GTEST = -DGTEST_USE_OWN_TR1_TUPLE
 LDLIBS = -Lbin -lstan
 LDLIBS_STANC = -Lbin -lstanc
-EXE = 
+EXE =
 PATH_SEPARATOR = /
 
 
