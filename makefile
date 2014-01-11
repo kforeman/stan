@@ -29,18 +29,16 @@ STAN_HOME := $(dir $(firstword $(MAKEFILE_LIST)))
 EIGEN ?= lib/eigen_3.2.0
 BOOST ?= lib/boost_1.54.0
 GTEST ?= lib/gtest_1.7.0
-MKL ?= /apps/intel/2013/composer_xe_2013/mkl
-
+MKLROOT = /apps/intel/2013/mkl
 ##
 # Set default compiler options.
 ##
-CFLAGS = -I src -isystem $(EIGEN) -isystem $(BOOST) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -D EIGEN_USE_MKL_ALL
+CFLAGS = -I src -I $(MKLROOT)/include -isystem $(EIGEN) -isystem $(BOOST) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_USE_MKL_ALL
 CFLAGS_GTEST = -DGTEST_USE_OWN_TR1_TUPLE
-LDLIBS = -Lbin -lstan -L/apps/intel/2013/composer_xe_2013/mkl
+LDLIBS = -Lbin -lstan  -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_core -lmkl_sequential -lpthread -lm
 LDLIBS_STANC = -Lbin -lstanc
 EXE =
 PATH_SEPARATOR = /
-
 
 ##
 # Get information about the compiler used.
