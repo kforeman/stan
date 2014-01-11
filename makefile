@@ -34,9 +34,9 @@ MKL ?= /apps/intel/2013/composer_xe_2013/mkl
 ##
 # Set default compiler options.
 ##
-CFLAGS = -I src -isystem $(EIGEN) -isystem $(BOOST) -isystem $(MKL) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -D EIGEN_USE_MKL_ALL
+CFLAGS = -I src -isystem $(EIGEN) -isystem $(BOOST) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -D EIGEN_USE_MKL_ALL
 CFLAGS_GTEST = -DGTEST_USE_OWN_TR1_TUPLE
-LDLIBS = -Lbin -lstan
+LDLIBS = -Lbin -lstan -L/apps/intel/2013/composer_xe_2013/mkl
 LDLIBS_STANC = -Lbin -lstanc
 EXE =
 PATH_SEPARATOR = /
