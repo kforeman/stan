@@ -35,9 +35,9 @@ MKLROOT = /apps/intel/2013sp1/mkl
 # Set default compiler options.
 ##
 # check http://software.intel.com/en-us/articles/intel-mkl-link-line-advisor/ for platform dependent MKL flags
-CFLAGS = -I src -I $(MKLROOT)/include -isystem $(EIGEN) -isystem $(BOOST) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_USE_MKL_ALL
+CFLAGS = -I src -I $(MKLROOT)/include -openmp -isystem $(EIGEN) -isystem $(BOOST) -Wall -DBOOST_RESULT_OF_USE_TR1 -DBOOST_NO_DECLTYPE -DBOOST_DISABLE_ASSERTS -DEIGEN_USE_MKL_ALL
 CFLAGS_GTEST = -DGTEST_USE_OWN_TR1_TUPLE
-LDLIBS = -Lbin -lstan  -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_core -lmkl_sequential -lpthread -lm
+LDLIBS = -Lbin -lstan  -L$(MKLROOT)/lib/intel64 -lmkl_intel_lp64 -lmkl_core -lmkl_thread -lpthread -lm
 LDLIBS_STANC = -Lbin -lstanc
 EXE =
 PATH_SEPARATOR = /
