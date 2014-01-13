@@ -29,7 +29,7 @@ STAN_HOME := $(dir $(firstword $(MAKEFILE_LIST)))
 EIGEN ?= lib/eigen_3.2.0
 BOOST ?= lib/boost_1.54.0
 GTEST ?= lib/gtest_1.7.0
-MKLROOT = /apps/intel/2013/mkl
+MKLROOT = /apps/intel/2013sp1/mkl
 
 ##
 # Set default compiler options.
