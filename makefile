@@ -17,7 +17,7 @@ SUFIXES:
 # - AR: archiver (must specify for cross-compiling)
 # - OS: {mac, win, linux}.
 ##
-CC = icc
+CC = icpc
 O = 3
 O_STANC = 0
 AR = ar
